@@ -7,7 +7,7 @@ fi
 # Create the module directory
 module_dir="./src/modules/$1"
 mkdir -p "$module_dir"
-mkdir -p "$module_dir/controller"
+mkdir -p "$module_dir/controllers"
 mkdir -p "$module_dir/models"
 mkdir -p "$module_dir/routes"
 mkdir -p "$module_dir/services"
@@ -26,13 +26,9 @@ echo "" >> "$module_dir/routes/$1$route"
 echo "" >> "$module_dir/routes/$1$route"
 echo "module.exports = router;" >> "$module_dir/routes/$1$route"
 
-controller = "Controller.js"
-touch "$module_dir/controller/$1$controller"
-
-model = "Model.js"
-touch "$module_dir/controller/$1$model"
-
-service = "Service.js"
-touch "$module_dir/controller/$1$service"
+touch "$module_dir/controllers/${1}Controller.js"
+touch "$module_dir/models/${1}Model.js"
+touch "$module_dir/services/${1}Service.js"
+touch "$module_dir/tests/${1}.test.js"
 
 echo "Module '$1' created successfully."
